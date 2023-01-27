@@ -1,0 +1,20 @@
+
+/** ADD YOUR AWESOME CODES HERE **/
+p{color: #222;}
+
+/*//////////////05-12-2022////////////////*/
+
+div#navbar-menu .nav-item:hover.nav-item ul {
+    display: block;
+}
+div#navbar-menu .nav-item ul li {
+    border-bottom: 1px solid #b0b435;
+}
+div#navbar-menu .nav-item ul {
+	position: absolute;
+    background: #fff;
+    padding: 10px 15px;
+    width: 150px;
+}
+
+/*//////////////05-12-2022////////////////*/
