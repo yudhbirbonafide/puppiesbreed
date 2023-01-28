@@ -28,3 +28,11 @@ function decryption($data, $key=ENCRYPTION_KEY) {
     list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
     return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
 }
+
+function check_file_exist($file){
+    if (file_exists( public_path() . $file)) {
+        return true;
+    } else {
+        return false;
+    } 
+}

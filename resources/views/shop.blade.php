@@ -9,25 +9,44 @@
     </div>
     <div class="col-9">
         <div class="row">
-            <?php if(!$result->isEmpty()){
-                foreach($result as $val){    
-            ?>
-            <div class="col-3 mb-2" v-for="puppy in shopListing?.data" :key="puppy.id">
-                <div class="card">
-                    <img src="{{asset($val['imageUrl'])}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">{{$val['name']}}</p>
-                        <p class="card-text">{{$val['collection']}}</p>
-                        <p class="card-text">{{$val['weeks']}}</p>
-                    </div>
-                </div>
-            </div>
-            <?php }}else{?>
-                <div class="col-3 mb-2">
-                    <p>No Record Found.</p> 
-                </div>
-            <?php }?> 
-            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Collection</th>
+                        <th scope="col">Weeks</th>
+                        <th scope="col">Registery</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Retailer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if(!$result->isEmpty()){
+                    foreach($result as $val){    
+                ?>
+                <tr>
+                    <td>{{$val['id']}}</td>
+                    <?php if(check_file_exist($val['imageUrl'])){?>
+                        <td><img src="{{asset($val['imageUrl'])}}" alt="..." width="100" height="60"></td>
+                    <?php }else{?>
+                        <td><img src="{{asset('images/blank.jpg')}}" alt="..." width="100" height="60"></td>
+                    <?php }?>
+                    <td>{{$val['name']}}</td>
+                    <td>{{$val['collection']}}</td>
+                    <td>{{$val['weeks']}}</td>
+                    <td>{{$val['registery']}}</td>
+                    <td>{{$val['price']}}</td>
+                    <td>{{$val['vendor_name']}}</td>
+                </tr>
+                <?php }}else{?>
+                    <tr>
+                        <td colspan="4">No Record Found.</td> 
+                    </tr>
+                <?php }?> 
+                </tbody>
+            </table>
         </div>
         <div class="row pos_right">
             {{ $result->links() }} 
